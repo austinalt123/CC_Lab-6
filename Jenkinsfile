@@ -14,8 +14,8 @@ pipeline {
                 sh '''
                 docker rm -f backend1 backend2 nginx-lb || true
 
-                docker run -d --name backend1 backend-app
-                docker run -d --name backend2 backend-app
+                docker run -d --name backend1 -p 8081:8080 backend-app
+                docker run -d --name backend2 -p 8082:8080 backend-app
 
                 sleep 3
                 '''
